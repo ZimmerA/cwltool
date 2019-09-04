@@ -805,6 +805,10 @@ def main(argsl=None,                   # type: Optional[List[str]]
         if not executor:
             if args.parallel:
                 temp_executor = MultithreadedJobExecutor()
+                if args.cores:
+                    temp_executor.max_cores = args.cores
+                if args.ram:
+                    temp_executor.max_ram = args.ram
                 runtimeContext.select_resources = temp_executor.select_resources
                 real_executor = temp_executor  # type: JobExecutor
             else:

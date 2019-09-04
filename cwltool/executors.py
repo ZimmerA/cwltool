@@ -212,9 +212,6 @@ class MultithreadedJobExecutor(JobExecutor):
         self.exceptions = []  # type: List[WorkflowException]
         self.pending_jobs = []  # type: List[Union[JobBase, WorkflowJob]]
         self.pending_jobs_lock = threading.Lock()
-
-        self.max_ram = int(psutil.virtual_memory().available / 2**20)
-        self.max_cores = psutil.cpu_count()
         self.allocated_ram = 0
         self.allocated_cores = 0
 

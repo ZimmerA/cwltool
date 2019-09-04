@@ -26,6 +26,10 @@ def arg_parser():  # type: () -> argparse.ArgumentParser
 
     parser.add_argument("--parallel", action="store_true", default=False,
                         help="[experimental] Run jobs in parallel. ")
+    parser.add_argument("--cores", type=int,
+                        help="Amount of cores to use in parallel mode. ")
+    parser.add_argument("--ram", type=int, default=1,
+                        help="Amount of ram to use in parallel mode.")
     envgroup = parser.add_mutually_exclusive_group()
     envgroup.add_argument("--preserve-environment", type=Text, action="append",
                           help="Preserve specific environment variable when "
